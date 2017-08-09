@@ -6,60 +6,77 @@ import requests
 from pprint import pprint
 from time import sleep
 from random import random
+import urllib3
+from lxml import html
 
 headers = {'User-agent': 'Mozilla/5.0'}
 HOME_PAGE_URL = 'https://kostroma.orgdir.ru'
-CATEGORY_PAGE_URL = '/Мебель/'
+
 req = requests.get(HOME_PAGE_URL, headers=headers)
-# html_doc = urlopen(HOME_PAGE_URL).read()
-# print(req.text.encode())
+#print(req.text.encode())
 soup = BeautifulSoup(req.text, 'lxml')
-# soup = BeautifulSoup(html_doc)
 
+category_list = [tag.text for tag in soup.select('.h5 > a')] #получаю список категорий на главной странице
+category_list_links = [link.get('href') for link in soup.select('.h5 > a')] # получаю список ссылок на главной
 
-#Получаю ссылки с главной страницы на категории
-def firm_list():
-    firm_list = []
-    html = urlopen(HOME_PAGE_URL + CATEGORY_PAGE_URL).read()
-    bsObj = BeautifulSoup(html, 'html.parser')
-    for tag in soup.select('h3 a'):
-        #category_links = tag.get('href').strip('/')
-
-        response = requests.get(tag)
-        if response.status_code != 200:
-            continue
-        else:
-            print(response)
-        time.sleep(2)
-        return firm_list
-
-# def find_category_link(url):
-#     for tag in soup.select('h3 > a'):
-#         category_links = tag.get('href')
-#     return category_links
-#category_links = list(tag.get('href') for tag in soup.select('h3 > a'))
-
-#Получаю ссылки с категорий страницы на фирмы
-firm_links = list(tag.get('href') for tag in soup.select('h3 a'))
+def next_page(HOME_PAGE_URL):
+    next_link = []
+    category_list = [tag.text for tag in soup.select('.h5 > a')]
+    for link in category_list:
+        next_link.append(HOME_PAGE_URL + '/' + link + '/')
+        response = requests.get(next_link)
+        next_link_category = html.fromstring(response.content)
+        return (next_link_category)
+    
+print(next_page(HOME_PAGE_URL))
 
 
 
-# for link in soup.find_all('a'):
-#     sleep(random() * 3)
-#     print(link.get('href'))
 
-def get_firm_info(url):
-    data = dict()
-    req = requests.get(url, headers=headers)
-    soup = BeautifulSoup(req.text, 'lxml')
-    data['link'] = soup.find(rel='canonical').get('href')
-    data['name'] = soup.find('h1').text.strip()
-    data['site'] = soup.find('ul', 'li', 'itemprop="url"').text if soup.find('ul', 'li', 'itemprop="url"') else None
-    data['email'] = soup.find('ul', 'li', 'itemprop="email"').get('itemprop')
 
-    return data
+#Получаю ссылки на внутреннюю страницу с категории
+# def firm_list():
+#     next_link = []
+#     req = requests(HOME_PAGE_URL + '/' + title_category).read()
+#
+#     for link in req:
+#         #category_links = tag.get('href').strip('/')
+#
+#         response = requests.get(tag)
+#         if response.status_code != 200:
+#             continue
+#         else:
+#             print(response)
+#         time.sleep(2)
+#         return firm_list
 
-firm_data = []
+# # def find_category_link(url):
+# #     for tag in soup.select('h3 > a'):
+# #         category_links = tag.get('href')
+# #     return category_links
+# #category_links = list(tag.get('href') for tag in soup.select('h3 > a'))
+#
+# #Получаю ссылки с категорий страницы на фирмы
+# firm_links = list(tag.get('href') for tag in soup.select('h3 a'))
+#
+#
+#
+# # for link in soup.find_all('a'):
+# #     sleep(random() * 3)
+# #     print(link.get('href'))
+#
+# def get_firm_info(url):
+#     data = dict()
+#     req = requests.get(url, headers=headers)
+#     soup = BeautifulSoup(req.text, 'lxml')
+#     data['link'] = soup.find(rel='canonical').get('href')
+#     data['name'] = soup.find('h1').text.strip()
+#     data['site'] = soup.find('ul', 'li', 'itemprop="url"').text if soup.find('ul', 'li', 'itemprop="url"') else None
+#     data['email'] = soup.find('ul', 'li', 'itemprop="email"').get('itemprop')
+#
+#     return data
+#
+# firm_data = []
 #
 # for link in firm_links:
 #     print('Parse ' + link)
