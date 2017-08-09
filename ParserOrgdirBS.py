@@ -23,11 +23,12 @@ def next_page(HOME_PAGE_URL):
     next_link = []
     category_list = [tag.text for tag in soup.select('.h5 > a')]
     for link in category_list:
+        time.sleep(2)
         next_link.append(HOME_PAGE_URL + '/' + link + '/')
-        response = requests.get(next_link)
-        next_link_category = html.fromstring(response.content)
-        return (next_link_category)
-    
+        # response = requests.get(next_link)
+        # next_link_category = response.content
+    return (next_link)
+
 print(next_page(HOME_PAGE_URL))
 
 
@@ -54,17 +55,8 @@ print(next_page(HOME_PAGE_URL))
 # #     for tag in soup.select('h3 > a'):
 # #         category_links = tag.get('href')
 # #     return category_links
-# #category_links = list(tag.get('href') for tag in soup.select('h3 > a'))
 #
-# #Получаю ссылки с категорий страницы на фирмы
-# firm_links = list(tag.get('href') for tag in soup.select('h3 a'))
-#
-#
-#
-# # for link in soup.find_all('a'):
-# #     sleep(random() * 3)
-# #     print(link.get('href'))
-#
+
 # def get_firm_info(url):
 #     data = dict()
 #     req = requests.get(url, headers=headers)

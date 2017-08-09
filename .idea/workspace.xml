@@ -15,7 +15,7 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/ParserOrgdirRu$ParserOrgdir.coverage" NAME="ParserOrgdir Coverage Results" MODIFIED="1501840804386" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ParserOrgdirRu$ParserOrgdirBS.coverage" NAME="ParserOrgdirBS Coverage Results" MODIFIED="1502265641063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ParserOrgdirRu$ParserOrgdirBS.coverage" NAME="ParserOrgdirBS Coverage Results" MODIFIED="1502270566531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -41,12 +41,22 @@
       <file leaf-file-name="ParserOrgdirBS.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ParserOrgdirBS.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8745387">
-              <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+            <state vertical-scroll-proportion="3.6383765">
+              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
               <folding>
                 <element signature="e#24#58#0" expanded="true" />
-                <marker date="1502266045144" expanded="true" signature="1103:1490" placeholder="..." />
+                <marker date="1502270640708" expanded="true" signature="1095:1482" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TopfirmParser.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Parser_topfirm.ru/TopfirmParser.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -77,8 +87,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="111" />
-    <option name="y" value="268" />
+    <option name="x" value="132" />
+    <option name="y" value="257" />
     <option name="width" value="1163" />
     <option name="height" value="607" />
   </component>
@@ -132,7 +142,7 @@
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Parser_topfirm.ru/firms" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Parser_topfirm.ru/TopfirmParser.py" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="FullScreen" value="false" />
@@ -387,7 +397,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="111" y="268" width="1163" height="607" extended-state="0" />
+    <frame x="132" y="257" width="1163" height="607" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27201396" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -432,11 +442,11 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/ParserOrgdirBS.py</url>
-          <line>30</line>
-          <option name="timeStamp" value="39" />
+          <line>31</line>
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="40" />
+      <option name="time" value="42" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -457,7 +467,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#24#58#0" expanded="true" />
-            <marker date="1502266045144" expanded="true" signature="1103:1490" placeholder="..." />
+            <marker date="1502270640708" expanded="true" signature="1095:1482" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -494,7 +504,7 @@
           <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
           <folding>
             <element signature="e#24#58#0" expanded="true" />
-            <marker date="1502266045144" expanded="true" signature="1103:1490" placeholder="..." />
+            <marker date="1502270640708" expanded="true" signature="1095:1482" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -537,7 +547,7 @@
           <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
           <folding>
             <element signature="e#24#58#0" expanded="true" />
-            <marker date="1502266045144" expanded="true" signature="1103:1490" placeholder="..." />
+            <marker date="1502270640708" expanded="true" signature="1095:1482" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -669,14 +679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6236162">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.29889297">
@@ -705,19 +707,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../Parser_topfirm.ru/TopfirmParser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.062730625">
+        <state vertical-scroll-proportion="0.0">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8820755">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ParserOrgdirBS.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8745387">
-          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+        <state vertical-scroll-proportion="3.6383765">
+          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding>
             <element signature="e#24#58#0" expanded="true" />
-            <marker date="1502266045144" expanded="true" signature="1103:1490" placeholder="..." />
+            <marker date="1502270640708" expanded="true" signature="1095:1482" placeholder="..." />
           </folding>
         </state>
       </provider>
