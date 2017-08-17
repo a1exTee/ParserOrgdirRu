@@ -31,7 +31,7 @@ category_list_links.remove('https://vladimir.orgdir.ru/')
 #print(category_list_links)
 
 #возвращает список домашнего url + название категории
-def next_page(HOME_PAGE_URL):
+def get_page_category_firm(HOME_PAGE_URL):
     next_link = []
     category_list = [tag.text for tag in soup.select('.h5 > a')]
     #Другие города
@@ -175,36 +175,47 @@ def next_page(HOME_PAGE_URL):
         next_link.append(HOME_PAGE_URL + '/' + link + '/')
     return next_link
 
+
 #print(next_page(HOME_PAGE_URL)) #'https://kostroma.orgdir.ru/Гостевые дома/'
 
 #получаем ссылки на фирмы
 firms_links = []
-for link in next_page(HOME_PAGE_URL):
+page_firm = []
+for link in get_page_category_firm(HOME_PAGE_URL):
+
     # Захожу в категории
     response = requests.get(link, timeout=10)
     soup = BeautifulSoup(response.text, 'lxml')
-
     firm_list = [tag.text for tag in soup.select('.h4 > a')]
     firm_list.remove('Также в каталоге')
     firm_link = [link.get('href') for link in soup.select('.h4 > a')]
     firm_link.remove('/queries/')
-
     #next_page_pagination = [a.get('href') for a in get_ul_pagination.find('a', { "class" : "ajaxable" })]
     #firm_dict = dict(zip(firm_list, firm_link)) #'Берёзка, комплекс
     # отдыха':'https://kostroma.orgdir.ru/berezka-morskaya-c70000001017809264/?h=kfwpd9G6G437G5G7H1H17pEjAgm3A52665231130Euvqp9G45346I3BB2B36o93wEp8p671I0GA12029H878G5I4GJ2GG26'
-    firms_links.extend(firm_link) #
+    firms_links.extend(firm_link)
 
     # Пагинация внутри категории
-    last_page_in_category = [href.get('href') for href in soup.find('ul', {"class": "pagination"}).find_all('a')[1:-1]]
-    for number in last_page_in_category:
-        #url_second, page_second = number.get('href').split('=')
-        res = requests.get(number, timeout=10)
+    next_link_in_category = [href.get('href') for href in soup.find('ul', {"class": "pagination"}).find_all('a')[1:-1]]
+    # Получаю последний номер страницы
+    last_number = int(max([href.text for href in soup.find('ul', {"class": "pagination"}).find_all('a')[:-1]]))
+
+    page = [link + '?page=']
+    list_number_pages = list(range(2, last_number + 1, 1))
+    page_firm.append(page)
+    page_firm.append(list_number_pages)
+    #for lists in page_firm:
+    for num in list_number_pages:
+        href_next_page = str(page[0]) + str(num)
+
+        res = requests.get(href_next_page, timeout=10)
         soup = BeautifulSoup(res.text, 'lxml')
         firm_list = [tag.text for tag in soup.select('.h4 > a')]
         firm_list.remove('Также в каталоге')
         firm_link = [link.get('href') for link in soup.select('.h4 > a')]
         firm_link.remove('/queries/')
-    firms_links.extend(firm_link)
+        firms_links.extend(firm_link)
+#print(len(firms_links))#341
 
 # Возвращает информацию со страницы фирмы
 def get_firm_info(firms_links):
@@ -240,16 +251,15 @@ def get_firm_info(firms_links):
         list_info.append(header + site + telephone)
         info.extend(list_info)
 
-        for index in info:
-            try:
-                infoString = '^'.join(index)
-                f.write(infoString + '\n')
-            except:
-                infoString = '^'.join(index).encode('cp1251', 'ignore').decode('cp1251')
-                f.write(infoString + '\n')
-            finally:
-                f.close()
+    for index in info:
+        try:
+            infoString = '^'.join(index)
+            f.write(infoString + '\n')
+        except UnicodeEncodeError:
+            infoString = '^'.join(index).encode('cp1251', 'ignore').decode('cp1251')
+            f.write(infoString + '\n')
+        # finally:
+        #     f.close()
     return info
 
 get_firm_info(firms_links)
-#TODO кодировка, пагинация внутри фирмы
